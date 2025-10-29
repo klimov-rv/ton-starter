@@ -1,0 +1,57 @@
+{
+  "name": "demo_nuxt3",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "ssr-preview": "nuxt build && nuxt preview",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "preview:clean": "rm -rf .output .nuxt/cache && nuxt build && nuxt preview",
+    "prepare": "nuxt prepare && (git config core.hooksPath .git-hooks || echo 'Not in a git repo')",
+    "lint": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,ts,vue}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{json,css,scss,md}": "prettier --write"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
+    "@element-plus/nuxt": "^1.1.1",
+    "@nuxt/eslint": "^1.2.0",
+    "@nuxt/image": "^1.9.0",
+    "@nuxt/test-utils": "^3.17.2",
+    "@nuxtjs/i18n": "^9.4.0",
+    "@pinia/nuxt": "^0.9.0",
+    "cropperjs": "^2.0.0",
+    "eslint": "^9.23.0",
+    "nuxt": "^3.15.4",
+    "sass": "^1.85.0",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.20.0",
+    "@nuxt/types": "^2.18.1",
+    "@types/cropperjs": "^1.1.5",
+    "@types/node": "^22.13.4",
+    "element-plus": "^2.9.6",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "eslint-plugin-vue": "^9.32.0",
+    "globals": "^16.0.0",
+    "lint-staged": "^15.4.3",
+    "prettier": "3.5.1",
+    "typescript-eslint": "^8.24.1",
+    "vite-svg-loader": "^5.1.0"
+  },
+  "overrides": {
+    "vite": {
+      "rollup": "npm:@rollup/wasm-node"
+    }
+  }
+}

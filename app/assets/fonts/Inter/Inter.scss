@@ -1,0 +1,41 @@
+@use 'sass:list';
+
+$fonts: (
+  ('Thin', 100),
+  ('ThinItalic', 100, italic),
+  ('ExtraLight', 200),
+  ('ExtraLightItalic', 200, italic),
+  ('Light', 300),
+  ('LightItalic', 300, italic),
+  ('Regular', 400),
+  ('Italic', 400, italic),
+  ('Medium', 500),
+  ('MediumItalic', 500, italic),
+  ('SemiBold', 600),
+  ('SemiBoldItalic', 600, italic),
+  ('Bold', 700),
+  ('BoldItalic', 700, italic),
+  ('ExtraBold', 800),
+  ('ExtraBoldItalic', 800, italic),
+  ('Black', 900),
+  ('BlackItalic', 900, italic)
+);
+
+@mixin font-face($name, $weight, $style: normal) {
+  @font-face {
+    font-family: 'Inter';
+    src:
+      url('assets/fonts/Inter/Inter-#{$name}.woff2') format('woff2'),
+      url('assets/fonts/Inter/Inter-#{$name}.woff') format('woff');
+    font-weight: $weight;
+    font-style: $style;
+    font-display: swap;
+  }
+}
+
+@each $font in $fonts {
+  $name: list.nth($font, 1);
+  $weight: list.nth($font, 2);
+  $style: if(list.length($font) > 2, list.nth($font, 3), normal);
+  @include font-face($name, $weight, $style);
+}

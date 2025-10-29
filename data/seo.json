@@ -1,0 +1,11 @@
+{
+  "title": "TON Starter Kit - Ваш путеводитель в экосистеме The Open Network",
+  "meta": [
+    { "charset": "utf-8" },
+    { "name": "viewport", "content": "width=device-width, initial-scale=1" },
+    {
+      "name": "description",
+      "content": "TON Starter Kit: интуитивно понятный хаб для новичков в экосистеме The Open Network"
+    }
+  ]
+}

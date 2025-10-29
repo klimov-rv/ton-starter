@@ -1,0 +1,25 @@
+$-colors: (
+  'primary': (
+    'base': #673bb7,
+  ),
+);
+
+$-dialog: (
+  'border-radius': 10px,
+  'padding-primary': 40px 30px 50px,
+);
+
+$-popover: (
+  'border-radius': 10px,
+);
+
+$-input: (
+  'border-radius': 10px,
+);
+
+@forward 'element-plus/theme-chalk/src/common/var.scss' with (
+  $colors: $-colors,
+  $dialog: $-dialog,
+  $popover: $-popover,
+  $input: $-input
+);

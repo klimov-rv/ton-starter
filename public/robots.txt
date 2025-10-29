@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /$
+Allow: /articles/
+Allow: /faq
+Host: https://demo.ru
+Sitemap: https://demo.ru/sitemap.xml

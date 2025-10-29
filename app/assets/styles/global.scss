@@ -1,0 +1,14 @@
+@use './global/reset.css';
+@use './global/simple-adaptive-grid.css';
+
+:root {
+  --gradient-purple-to-pink: linear-gradient(
+    25.88deg,
+    rgb(162, 52, 158),
+    rgb(231, 36, 106)
+  );
+  --color-secondary: #8f9499;
+  --color-border: #e7e7e7;
+  --color-blue: #3dabef;
+  --color-gray: #fafafa;
+}
