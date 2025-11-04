@@ -10,28 +10,27 @@ export interface FooterColumn {
 
 export const footerLinks: FooterColumn[] = [
   {
-    title: 'Документы',
+    title: 'title 1',
     links: [
       {
-        name: 'Оферта',
-        url: '/articles/dogovor-oferta-polzovatelya-nft-platformy',
-      },
-      { name: 'Процесс оплаты', url: '/articles/informatsiya-ob-oplate' },
-      {
-        name: 'Правила сервиса',
-        url: '/articles/pravila-ispolzovaniya-sayta',
+        name: 'name 1',
+        url: '/articles/url1',
       },
       {
-        name: 'Обработка данных',
-        url: '/articles/obrabotka-personalnykh-dannykh',
+        name: 'name 2',
+        url: '/articles/url2',
+      },
+      {
+        name: 'name 3',
+        url: '/articles/url3',
       },
     ],
   },
   {
-    title: 'О компании',
+    title: 'title 2',
     links: [
-      { name: 'Партнеры', url: '/#partners' },
-      { name: 'Пресса о нас', url: '/#press' },
+      { name: 'name 1', url: '/#' },
+      { name: 'name 2', url: '/#' },
     ],
   },
 ];

@@ -1,30 +1,29 @@
-<script setup lang="ts">
-const buildTime = __BUILD_TIME__;
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <div class="min-h-screen bg-gray-50">
-    <header class="bg-white shadow-sm">
-      <div class="container py-6">
-        <h1 class="text-3xl font-bold text-center text-ton-primary">
-          TON Starter Kit
-        </h1>
-        <p class="text-center text-gray-600 mt-2">
-          Ваш путеводитель в экосистеме The Open Network
-        </p>
-      </div>
-    </header>
+  <div class="main-app-block">
+    <HeaderDefault />
 
-    <main class="container py-8">
+    <main class="container">
       <slot />
     </main>
 
-    <footer class="bg-white border-t mt-auto py-6">
-      <div class="container text-center text-gray-500 text-sm">
-        assembly stamp: {{ buildTime }}
-      </div>
-    </footer>
+    <FooterDefault />
   </div>
 </template>
 
-<style></style>
+<style>
+.main-app-block {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
+
+  background-color: #fbfafa;
+  background-image:
+    linear-gradient(-45deg, #fafafa 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #fdfdfd 75%),
+    linear-gradient(-45deg, transparent 75%, #fefefe 75%);
+  background-size: 5px 5px;
+}
+</style>

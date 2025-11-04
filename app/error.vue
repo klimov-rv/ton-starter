@@ -50,8 +50,9 @@ const errCode = JSON.stringify(error, null, 2);
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 150px;
-  margin-bottom: 150px;
+  justify-content: center;
+  min-height: 310px;
+  flex: 1 1 310px;
 
   .n-alert-body__content {
     overflow: auto;
@@ -69,6 +70,7 @@ const errCode = JSON.stringify(error, null, 2);
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      padding: 50px 0;
     }
 
     &_message {

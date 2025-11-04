@@ -2,17 +2,12 @@
 
 <template>
   <Html lang="ru">
-    <Body class="main-app-block">
+    <Body>
       <NuxtLayout>
         <NuxtPage />
       </NuxtLayout>
     </Body>
   </Html>
 </template>
-<style>
-.main-app-block {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-</style>
+
+<style></style>

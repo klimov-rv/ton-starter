@@ -1,47 +1,55 @@
 <script setup lang="ts">
-const navigationCards = [
-  {
-    icon: '🦉',
-    title: 'С чего начать?',
-    description: 'Базовые шаги для новичка',
-    route: '/getting-started',
-  },
-  {
-    icon: '💰',
-    title: 'Купить TON',
-    description: 'Способы покупки токена',
-    route: '/buy-ton',
-  },
-  {
-    icon: '🎁',
-    title: 'Telegram Gifts',
-    description: 'Что это и как использовать',
-    route: '/telegram-gifts',
-  },
-  {
-    icon: '🎮',
-    title: 'Заработать TON',
-    description: 'Активные и пассивные способы заработка',
-    route: '/earn-ton',
-  },
-];
+import { navLinks, type navCard } from '~~/data/navigationLinks';
+
+const navigationCards = ref<navCard[]>(navLinks);
 </script>
 
 <template>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-    <el-card
+  <el-row class="custom-menu-grid flex flex-wrap gap-4" :gutter="30">
+    <el-col
       v-for="card in navigationCards"
       :key="card.title"
-      class="cursor-pointer hover:shadow-lg transition-shadow"
-      @click="navigateTo(card.route)"
+      :sm="12"
+      :span="24"
     >
-      <template #header>
-        <div class="flex items-center gap-2">
-          <span class="text-xl">{{ card.icon }}</span>
-          <h3 class="text-lg font-semibold">{{ card.title }}</h3>
-        </div>
-      </template>
-      <p class="text-gray-600">{{ card.description }}</p>
-    </el-card>
-  </div>
+      <el-card class="custom-card" @click="navigateTo(card.route)">
+        <template #header>
+          <div class="items-center">
+            <span class="item-icon">{{ card.icon }}</span>
+            <h3 class="item-title">{{ card.title }}</h3>
+          </div>
+        </template>
+        <p class="item-description">{{ card.description }}</p>
+      </el-card>
+    </el-col>
+  </el-row>
 </template>
+
+<style lang="scss">
+.el-col {
+  margin-bottom: 30px;
+}
+
+.custom-menu-grid {
+  .custom-card {
+    border-radius: 15px;
+    box-shadow: none;
+    padding: 13px 15px;
+    .item {
+      &-icon {
+        font-size: 42px;
+        display: block;
+        margin-bottom: 15px;
+      }
+      &-title {
+        font-size: 30px;
+      }
+      &-description {
+        font-size: 20px;
+        width: 81%;
+        height: 2.5em;
+      }
+    }
+  }
+}
+</style>

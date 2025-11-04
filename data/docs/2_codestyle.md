@@ -74,9 +74,10 @@
 
 ![doc_eslint_2](https://i.imgur.com/yrGtEQm.jpeg)
 
-- Основные **правила форматирования** prettier встроены в Eslinter
+- Основные **правила форматирования** prettier
 
 ```
+  // .prettierrc
  {
     singleQuote: true,
     semi: true,
@@ -85,34 +86,51 @@
   },
 ```
 
-- **Правила Eslint** используются стандартные/рекомендуемые. Кастомные правила привидены ниже:
+- **Базовые правила Eslint** Могут меняться и дополняться.
+  Но как отправную точку предлагаю такую настройку `eslint.config.js`:
 
 ```
-{
+import globals from 'globals';
+import parserVue from 'vue-eslint-parser';
+import tsPlugin from '@typescript-eslint/eslint-plugin';
+import parserTs from '@typescript-eslint/parser';
+import vuePlugin from 'eslint-plugin-vue';
+import prettierPlugin from 'eslint-plugin-prettier';
+
+// ESLint flat config
+export default [
+  // Ignore generated output and dependencies
+  {
+    ignores: ['.output/**', '.nuxt/**', 'node_modules/**', 'types/**'],
+  },
+
+  // Project files configuration
+  {
+    files: ['**/*.{js,mjs,cjs,ts,vue}'],
+    languageOptions: {
+      parser: parserVue,
+      parserOptions: {
+        parser: parserTs,
+        ecmaVersion: 2020,
+        sourceType: 'module',
+        extraFileExtensions: ['.vue'],
+      },
+      globals: globals.browser,
+    },
+    plugins: {
+      vue: vuePlugin,
+      '@typescript-eslint': tsPlugin,
+      prettier: prettierPlugin,
+    },
     rules: {
-      // Отключаем правило для максимального количества атрибутов на строку
       'vue/max-attributes-per-line': 'off',
-
-      // Отключаем правило no-undef
       'no-undef': 'off',
-
-      // Отключаем правило @typescript-eslint/no-explicit-any
       '@typescript-eslint/no-explicit-any': 'off',
-
-      // Отключаем правило "multi-word-component-names"
       'vue/multi-word-component-names': 'off',
-
-      // Отключаем правило "vue/no-reserved-component-names"
       'vue/no-reserved-component-names': 'off',
-
-      // Отключаем правило "no-v-html"
       'vue/no-v-html': 'off',
-
-      // Правила для console и debugger
       'no-console': 'warn',
       'no-debugger': 'warn',
-
-      // Правило для отступов в HTML
       'vue/html-indent': [
         'warn',
         2,
@@ -122,10 +140,9 @@
           alignAttributesVertically: true,
         },
       ],
-
-      'vue/singleline-html-element-content-newline': 'off', // Отключаем требование новой строки для однострочных элементов
-      'vue/multiline-html-element-content-newline': 'off', // Отключаем требование новой строки для многострочных элементов
-      'vue/html-closing-bracket-newline': 'off', // Отключаем правило новой строки перед закрывающей скобкой
+      'vue/singleline-html-element-content-newline': 'off',
+      'vue/multiline-html-element-content-newline': 'off',
+      'vue/html-closing-bracket-newline': 'off',
       'vue/attributes-order': [
         'error',
         {
@@ -142,15 +159,7 @@
           alphabetical: false,
         },
       ],
-
-      // Правило для неиспользуемых переменных
-      'vue/no-unused-vars': [
-        'error',
-        {
-          ignorePattern: '^_',
-        },
-      ],
-
+      'vue/no-unused-vars': ['error', { ignorePattern: '^_' }],
       '@typescript-eslint/no-unused-vars': [
         'error',
         {
@@ -159,19 +168,11 @@
           caughtErrorsIgnorePattern: '^_',
         },
       ],
-
-      // Настройки Prettier
-      'prettier/prettier': [
-        'error',
-        {
-          singleQuote: true,
-          semi: true,
-          tabWidth: 2,
-          trailingComma: 'all',
-        },
-      ],
+      'prettier/prettier': 'warn',
     },
-  }
+  },
+];
+
 ```
 
 ##### 4. **Процесс завершения задачи**
