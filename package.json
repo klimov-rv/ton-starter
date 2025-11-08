@@ -4,10 +4,12 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
+    "build:gh-pages": "npm run move-to-root && npm run generate",
     "dev": "nuxt dev",
     "dev:no-lint": "nuxt dev --no-lint",
     "ssr-preview": "nuxt build && nuxt preview",
     "generate": "nuxt generate",
+    "move-to-root": "node .github/move-to-root.js",
     "preview": "nuxt preview",
     "lint": "eslint --fix .",
     "lint-staged": "lint-staged",

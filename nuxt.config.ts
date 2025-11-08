@@ -1,5 +1,6 @@
 import { resolve } from 'path';
-import appStamp from './app/buildTime.js';
+// import appStamp from './app/buildTime.js';
+// import appStamp from './buildTime.js'; // путь изменился
 import appSEO from './data/seo.json';
 
 export default defineNuxtConfig({
@@ -99,7 +100,8 @@ export default defineNuxtConfig({
       },
     },
     define: {
-      __BUILD_TIME__: appStamp,
+      // __BUILD_TIME__: appStamp,
+      __BUILD_TIME__: `${new Date().toISOString()}`,
     },
   },
 
